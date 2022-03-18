@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light font-weight-bold">
+        <a href="{% url 'home' %}" class="navbar-brand"><span class="material-icons md-36 text-primary">shopping_bag</span></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar"><span class="navbar-toggler-icon"></span></button>
+        <div id="navbar" class="collapse navbar-collapse justify-content-between">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link px-3 dropdown-toggle" data-toggle="dropdown">Categories</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'home' %}">All</a>
+                        {% for category in links %}
+                        <a class="dropdown-item" href="{{ category.get_url }}">{{ category.name }}</a>
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="nav-item "><a class="nav-link px-3" href="">Contacts</a></li>
+                <li class="nav-item "><a class="nav-link px-3" href="{% url 'product' %}">About</a></li>
+            </ul>
+            <form action="" class="form-inline">
+                <div class="input-group">
+                    <input type="text" placeholder="Search...">
+                    <div>
+                        <button class="btn-primary"><span class="material-icons">search</span></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </nav>
