@@ -1,0 +1,39 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+{% block title %}
+    Sign Up
+{% endblock %}
+{% block content %}
+    <div>
+        {% if not form.is_valid %}
+            <div>
+                <br>
+                <h1 class="product_title text-center">
+                    Create New Account
+                </h1>
+                <br>
+                <div class="col-9 col-sm-9 col-md-6 col-lg-5 mx-auto bg-light">
+                    <br>
+                    <p>Please input the following information to create a new account</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <p>{{ form|crispy }}</p>
+                        <button type="submit" class="btn btn-secondary">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <div class="mx-auto text-center">
+                <br>
+                <h1 class="product_title">
+                    Your account has been successfully created!
+                </h1>
+                <a href="{% url 'home' %}">Continue Shopping</a>
+            </div>
+
+        {% endif %}
+    </div>
+
+{% endblock %}
